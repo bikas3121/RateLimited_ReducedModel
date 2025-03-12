@@ -39,7 +39,7 @@ def test_signal(SCALE, MAXAMP, FREQ, Rng,  OFFSET, t):
 
 
 # %% Quantiser configurations 
-Qconfig = 4
+Qconfig = 3
 Nb, Mq, Vmin, Vmax, Rng, Qstep, YQ, Qtype = quantiser_configurations(Qconfig)
 
 # %% Sampling frequency and rate
@@ -131,7 +131,7 @@ match QMODEL:
 # %% MHOQ Ratelimit
 N_PRED = 1      # Prediction horizon 
 # Steps constraints for the MPC search space. MPC is constrained by:    current input- Step  <= current input <=  current input +  Step  
-Step = 200
+Step = 10
 
 MHOQ_RL = MHOQ_RLIM(Nb, Qstep, QMODEL, A, B, C, D)
 C_MHOQ = MHOQ_RL.get_codes(N_PRED, Xcs, YQns, MLns, Step)
